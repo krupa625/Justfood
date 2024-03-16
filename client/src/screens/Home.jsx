@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios'; // Import axios
 import Navbar from '../components/Navbar';
 import Card from '../components/Card';
 import Footer from '../components/Footer';
@@ -13,22 +14,22 @@ const Home = () => {
 
   const loadData = async () => {
     try {
-      const response = await fetch('food-deliver-app-olive.vercel.app', {
-        method: 'POST',
+      const response = await axios.post('https://fooddeliverapp.onrender.com', {}, {
         headers: {
           'Content-Type': 'application/json',
         },
       });
-      const responseData = await response.json();
-      setFoodItem(responseData[0]);
-      setFoodCat(responseData[1]);
+      console.log('Response:', response.data); // Log the response data
+      setFoodItem(response.data[0]);
+      setFoodCat(response.data[1]);
     } catch (error) {
-      console.error('Error fetching data:', error.message);
+      console.error('Error fetching data:', error.message); // Log the error message
       setError(error.message);
     } finally {
       setLoading(false);
     }
   };
+  
 
   useEffect(() => {
     loadData();
