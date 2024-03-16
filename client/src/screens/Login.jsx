@@ -10,7 +10,7 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const response = await fetch('http://localhost:5000/api/loginuser', {
+    const response = await fetch('food-deliver-app-orcin.vercel.app', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -88,3 +88,4 @@ const Login = () => {
 };
 
 export default Login;
+// http://localhost:5000/api/loginuser
