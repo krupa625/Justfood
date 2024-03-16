@@ -5,7 +5,7 @@ export default function Signup() {
   const [credentials, setCredentials] = useState({ name: "", email: "", password: "", geolocation: "" })
   let [address, setAddress] = useState("");
   let navigate = useNavigate()
-
+food-deliver-app-orcin.vercel.app
   const handleClick = async (e) => {
     e.preventDefault();
     let navLocation = () => {
@@ -21,7 +21,7 @@ export default function Signup() {
     // console.log(latlong)
     let [lat, long] = latlong
     console.log(lat, long)
-    const response = await fetch("http://localhost:5000/api/auth/getlocation", {
+    const response = await fetch("food-deliver-app-orcin.vercel.app", {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -37,7 +37,7 @@ export default function Signup() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const response = await fetch("http://localhost:5000/api/createUser", {
+    const response = await fetch("food-deliver-app-orcin.vercel.app", {
       // credentials: 'include',
       // Origin:"http://localhost:3000/login",
       method: 'POST',
@@ -100,3 +100,6 @@ export default function Signup() {
       </div>
   )
 }
+
+// http://localhost:5000/api/auth/getlocation
+// http://localhost:5000/api/createUser
