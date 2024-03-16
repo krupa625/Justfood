@@ -32,12 +32,13 @@ export default function Signup() {
       } else {
         alert('Enter Valid Credentials');
       }
+      
     } catch (error) {
       console.error('Error creating user:', error);
       alert('Error creating user');
     }
   };
-
+  
   const onChange = (e) => {
     setCredentials({ ...credentials, [e.target.name]: e.target.value });
   };

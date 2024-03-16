@@ -1,7 +1,6 @@
-import React from 'react';
-import Navbar from '../components/Navbar';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import Navbar from '../components/Navbar';
 
 const Login = () => {
   const [credential, setCredential] = useState({ email: '', password: '' });
@@ -10,27 +9,32 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const response = await fetch('http://localhost:8000/api/loginuser', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        email: credential.email,
-        password: credential.password,
-      }),
-    });
+    try {
+      const response = await fetch('http://localhost:8000/api/loginuser', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          email: credential.email,
+          password: credential.password,
+        }),
+      });
 
-    const json = await response.json();
-    console.log(json);
+      const json = await response.json();
+      console.log(json);
 
-    if (!json.success) {
-      alert('Enter Valid Details');
-    } else {
-      // Only navigate if login is successful
-      localStorage.setItem('userEmail', credential.email);
-      localStorage.setItem('authToken', json.authToken);
-      navigate('/');
+      if (!json.success) {
+        alert('Enter Valid Details');
+      } else {
+        // Only navigate if login is successful
+        localStorage.setItem('userEmail', credential.email);
+        localStorage.setItem('authToken', json.authToken);
+        navigate('/');
+      }
+    } catch (error) {
+      console.error('Error during login:', error);
+      alert('Error during login. Please try again.');
     }
   };
 

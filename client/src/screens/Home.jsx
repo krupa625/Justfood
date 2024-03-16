@@ -1,9 +1,7 @@
-// Home.js
 import React, { useState, useEffect } from 'react';
 import Navbar from '../components/Navbar';
 import Card from '../components/Card';
 import Footer from '../components/Footer';
-import Crouser from '../components/Crouser';
 import '../../node_modules/bootstrap-dark-5/dist/css/bootstrap-dark.min.css';
 
 const Home = () => {
@@ -15,15 +13,15 @@ const Home = () => {
 
   const loadData = async () => {
     try {
-      let response = await fetch('http://localhost:8000/api/foodData', {
+      const response = await fetch('http://localhost:8000/api/foodData', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
       });
-      response = await response.json();
-      setFoodItem(response[0]);
-      setFoodCat(response[1]);
+      const responseData = await response.json();
+      setFoodItem(responseData[0]);
+      setFoodCat(responseData[1]);
     } catch (error) {
       console.error('Error fetching data:', error.message);
       setError(error.message);
@@ -38,37 +36,32 @@ const Home = () => {
 
   return (
     <>
-      <div>
-        <Navbar />
-      </div>
-      <div>
+      <Navbar />
       <div id="carouselExampleControls" className="carousel slide" data-bs-ride="carousel">
-                <div className="carousel-inner" id="crousel" style={{ maxHeight: "50vh" }}>
-                    <div className='carousel-caption' style={{ zIndex: "10" }}>
-                        <form className="d-flex" role="search">
-                            <input className="form-control me-2" type="search" value={search} onChange={(e) => setSearch(e.target.value)} placeholder="Search" aria-label="Search" />
-                            {/* <button className="btn btn-outline-success text-white" type="submit">Search</button> */}
-                        </form>
-                    </div>
-                    <div className="carousel-item active">
-                        <img src="https://source.unsplash.com/random/900x400/?burger" className="d-block w-100" style={{ filter: "brightness(30%)", objectFit: "cover", maxHeight: "100%", maxWidth: "100%" }}  />
-                    </div>
-                    <div className="carousel-item">
-                        <img src="https://source.unsplash.com/random/900x400/?pizza" className="d-block w-100" style={{ filter: "brightness(30%)", objectFit: "cover", maxHeight: "100%", maxWidth: "100%" }}  />
-                    </div>
-                    <div className="carousel-item">
-                        <img src="https://source.unsplash.com/random/900x400/?pasta" className="d-block w-100" style={{ filter: "brightness(30%)", objectFit: "cover", maxHeight: "100%", maxWidth: "100%" }} />
-                    </div>
-                </div>
-                <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-                    <span className="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span className="visually-hidden">Previous</span>
-                </button>
-                <button className="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-                    <span className="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span className="visually-hidden">Next</span>
-                </button>
-            </div>
+        <div className="carousel-inner" id="crousel" style={{ maxHeight: "50vh" }}>
+          <div className='carousel-caption' style={{ zIndex: "10" }}>
+            <form className="d-flex" role="search">
+              <input className="form-control me-2" type="search" value={search} onChange={(e) => setSearch(e.target.value)} placeholder="Search" aria-label="Search" />
+            </form>
+          </div>
+          <div className="carousel-item active">
+            <img src="https://source.unsplash.com/random/900x400/?burger" className="d-block w-100" style={{ filter: "brightness(30%)", objectFit: "cover", maxHeight: "100%", maxWidth: "100%" }} alt="Burger" />
+          </div>
+          <div className="carousel-item">
+            <img src="https://source.unsplash.com/random/900x400/?pizza" className="d-block w-100" style={{ filter: "brightness(30%)", objectFit: "cover", maxHeight: "100%", maxWidth: "100%" }} alt="Pizza" />
+          </div>
+          <div className="carousel-item">
+            <img src="https://source.unsplash.com/random/900x400/?pasta" className="d-block w-100" style={{ filter: "brightness(30%)", objectFit: "cover", maxHeight: "100%", maxWidth: "100%" }} alt="Pasta" />
+          </div>
+        </div>
+        <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+          <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span className="visually-hidden">Previous</span>
+        </button>
+        <button className="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+          <span className="carousel-control-next-icon" aria-hidden="true"></span>
+          <span className="visually-hidden">Next</span>
+        </button>
       </div>
 
       <div className="container">
@@ -91,10 +84,8 @@ const Home = () => {
                       .map((filteredItem) => (
                         <div key={filteredItem._id} className="col mb-4">
                           <Card
-                          foodItem={filteredItem}
-                            
+                            foodItem={filteredItem}
                             options={filteredItem.options[0]}
-                            
                           />
                         </div>
                       ))
@@ -110,9 +101,7 @@ const Home = () => {
         )}
       </div>
 
-      <div>
-        <Footer />
-      </div>
+      <Footer />
     </>
   );
 };
