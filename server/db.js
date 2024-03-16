@@ -11,7 +11,7 @@ if (result.error) {
 const hostname= "ph335579"
 const password= "Harsh@111"
 const database= "GoFood"
-const uri = `MONGO_URI = "mongodb+srv://${hostname}:${password}@cluster0.0obpanm.mongodb.net/${database}`
+const uri =  `mongodb+srv://${hostname}:${password}@cluster0.0obpanm.mongodb.net/${database}`
 
 const connectToDatabase = async () => {
   try {
