@@ -15,7 +15,7 @@ const Home = () => {
 
   const loadData = async () => {
     try {
-      let response = await fetch('http://localhost:5000/api/foodData', {
+      let response = await fetch('food-deliver-app-orcin.vercel.app', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -118,3 +118,5 @@ const Home = () => {
 };
 
 export default Home;
+
+// http://localhost:5000/api/foodData
