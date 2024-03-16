@@ -19,17 +19,16 @@ const Home = () => {
           'Content-Type': 'application/json',
         },
       });
-      console.log('Response:', response.data); // Log the response data
-      setFoodItem(response.data[0]);
-      setFoodCat(response.data[1]);
+      const responseData = response.data;
+      setFoodItem(responseData[0]);
+      setFoodCat(responseData[1]);
     } catch (error) {
-      console.error('Error fetching data:', error.message); // Log the error message
+      console.error('Error fetching data:', error.message);
       setError(error.message);
     } finally {
       setLoading(false);
     }
   };
-  
 
   useEffect(() => {
     loadData();

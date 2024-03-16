@@ -14,7 +14,9 @@ app.use(bodyParser.json());
 app.use('/api', authRoutes);
 app.use('/api', require('./Routes/displayData'));
 app.use('/api', require('./Routes/OrderData'));
-
+app.get("/gett", (req,res) =>{
+    res.send("hello");
+})
 connectToDatabase()
     .then(() => {
         app.listen(port, () => {
