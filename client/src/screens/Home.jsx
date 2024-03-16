@@ -3,7 +3,7 @@ import Navbar from '../components/Navbar';
 import Card from '../components/Card';
 import Footer from '../components/Footer';
 import '../../node_modules/bootstrap-dark-5/dist/css/bootstrap-dark.min.css';
-import axios from 'axios'
+
 
 const Home = () => {
   const [foodCat, setFoodCat] = useState([]);
@@ -14,7 +14,7 @@ const Home = () => {
 
   const loadData = async () => {
     try {
-      const response = await axios.post('https://fooddeliverapp.onrender.com', {
+      const response = await fetch('https://fooddeliverapp.onrender.com', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
