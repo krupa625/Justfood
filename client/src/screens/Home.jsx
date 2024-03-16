@@ -15,7 +15,7 @@ const Home = () => {
   const loadData = async () => {
     try {
       const response = await fetch('https://fooddeliverapp.onrender.com', {
-        method: 'POST',
+        method: 'GET',
         headers: {
           'Content-Type': 'application/json',
         },
