@@ -13,7 +13,8 @@ const Home = () => {
 
   const loadData = async () => {
     try {
-      const response = await fetch('http://localhost:8000/api/foodData', {
+      const response = await fetch('food-deliver-app-olive.vercel.app
+', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
