@@ -8,8 +8,10 @@ if (result.error) {
   console.error("Error loading .env file:", result.error);
   throw result.error;
 }
-
-const uri = process.env.MONGO_URI;
+const hostname= "ph335579"
+const password= "Harsh@111"
+const database= "GoFood"
+const uri = `MONGO_URI = "mongodb+srv://${hostname}:${password}@cluster0.0obpanm.mongodb.net/${database}`
 
 const connectToDatabase = async () => {
   try {
