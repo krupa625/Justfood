@@ -9,12 +9,15 @@ if (result.error) {
   throw result.error;
 }
 
-const uri = process.env.MONGO_URI
+const uri = process.env.MONGO_URI;
+
+console.log("MongoDB URI:", uri); // Log the URI to check its value
 
 const connectToDatabase = async () => {
   try {
     await mongoose.connect(uri, {
-
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
     });
     console.log("Database connected");
 
