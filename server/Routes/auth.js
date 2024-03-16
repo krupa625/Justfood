@@ -9,37 +9,38 @@ const crypto = require('crypto');
 
 function sendError(res, statusCode, message) {
     return res.status(statusCode).json({ success: false, error: message });
-}
-
-const jwtSecret = crypto.randomBytes(32).toString('base64');
-
-router.post("/createUser", [
+  }
+  
+  const jwtSecret = crypto.randomBytes(32).toString('base64');
+  
+  router.post('/createUser', [
     body('email').isEmail(),
     body('name').isLength({ min: 5 }),
-    body('password', 'Incorrect Password').isLength({ min: 5 })
-], async (req, res) => {
+    body('password', 'Password should be at least 5 characters long').isLength({ min: 5 })
+  ], async (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-        return sendError(res, 400, errors.array()[0].msg);
+      return sendError(res, 400, errors.array()[0].msg);
     }
-
+  
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(req.body.password, salt);
-
+  
     try {
-        await User.create({
-            name: req.body.name,
-            password: hashedPassword,
-            email: req.body.email,
-            location: req.body.location
-        });
-
-        res.json({ success: true });
+      await User.create({
+        name: req.body.name,
+        password: hashedPassword,
+        email: req.body.email,
+        location: req.body.location
+      });
+  
+      res.json({ success: true });
     } catch (err) {
-        console.error(err);
-        sendError(res, 500, err.message);
+      console.error(err);
+      sendError(res, 500, err.message);
     }
-});
+  });
+  
 
 router.post("/loginuser", [
     body('email').isEmail(),
