@@ -10,7 +10,7 @@ const Login = () => {
     e.preventDefault();
 
     try {
-      const response = await fetch('https://fooddeliverapp.onrender.com', {
+      const response = await fetch('http://localhost:4000/api/loginUser', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

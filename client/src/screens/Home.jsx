@@ -15,7 +15,7 @@ const Home = () => {
 
   const loadData = async () => {
     try {
-      const response = await axios.post('https://fooddeliverapp.onrender.com', {}, {
+      const response = await axios.post('http://localhost:4000/api/foodData', {}, {
         headers: {
           'Content-Type': 'application/json',
         },

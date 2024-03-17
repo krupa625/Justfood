@@ -11,7 +11,7 @@ export default function Signup() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('http://localhost:8000/api/createUser', {
+      const response = await fetch('http://localhost:4000/api/createUser', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -32,13 +32,13 @@ export default function Signup() {
       } else {
         alert('Enter Valid Credentials');
       }
-      
     } catch (error) {
       console.error('Error creating user:', error);
       alert('Error creating user');
     }
   };
   
+
   const onChange = (e) => {
     setCredentials({ ...credentials, [e.target.name]: e.target.value });
   };
@@ -54,7 +54,7 @@ export default function Signup() {
         const res = await navLocation();
         const latitude = res.coords.latitude;
         const longitude = res.coords.longitude;
-        const response = await fetch('http://localhost:8000/api/auth/getlocation', {
+        const response = await fetch('http://localhost:4000/api/auth/getlocation', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
