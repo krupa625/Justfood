@@ -77,7 +77,7 @@ export default function Signup() {
       <div>
         <Navbar />
       </div>
-      <div className='container'>
+      <div className='container text-white'>
         <form className='w-50 m-auto mt-5 border bg-dark border-success rounded' onSubmit={handleSubmit}>
           <div className="m-3">
             <label htmlFor="name" className="form-label">Name</label>
@@ -95,7 +95,7 @@ export default function Signup() {
             <label htmlFor="password" className="form-label">Password</label>
             <input type="password" className="form-control" name='password' value={credentials.password} onChange={onChange} />
           </div>
-          <button type="submit" className="m-3 btn btn-success">Submit</button>
+          <button type="submit" className="m-3 btn btn-success text-center">Submit</button>
           <Link to="/login" className="m-3 mx-1 btn btn-danger">Already a user</Link>
         </form>
       </div>

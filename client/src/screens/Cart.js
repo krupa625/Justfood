@@ -43,7 +43,7 @@ export default function Cart() {
     <div>
 
       {console.log(data)}
-      <div className='container m-auto mt-5 table-responsive  table-responsive-sm table-responsive-md' >
+      <div className='container m-auto mt-5 table-responsive  table-responsive-sm table-responsive-md text-white' >
         <table className='table table-hover '>
           <thead className=' text-success fs-4'>
             <tr>
@@ -69,7 +69,7 @@ export default function Cart() {
         </table>
         <div><h1 className='fs-2'>Total Price: {totalPrice}/-</h1></div>
         <div>
-          <button className='btn bg-success mt-5 ' onClick={handleCheckOut} > Check Out </button>
+          <button className='btn bg-success mt-5 text-white' onClick={handleCheckOut} > Check Out </button>
         </div>
       </div>
 
