@@ -15,8 +15,7 @@ const Home = () => {
 
   const loadData = async () => {
     try {
-      const response = await axios.post('food-deliver-app-olive.vercel.app
-/api/foodData', {}, {
+      const response = await axios.post('food-deliver-app-olive.vercel.app/api/foodData', {}, {
         headers: {
           'Content-Type': 'application/json',
         },
